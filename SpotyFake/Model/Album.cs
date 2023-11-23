@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace SpotyFake.Model
 {
     internal class Album
-    { public string _title {  get; set; }
+    { public int id {  get; set; }
+        public string _title {  get; set; }
       public string _releaseDate {  get; set; }
       public int _numTrack {  get; set; }
       public bool _liveVersion {  get; set; }
@@ -17,8 +18,9 @@ namespace SpotyFake.Model
      
 
         public Album() { }
-        public Album(string title, string releaseDate, int numTrack, bool liveVersion)
+        public Album(int id, string title, string releaseDate, int numTrack, bool liveVersion)
         {
+            this.id = id;   
             _title = title;
             _releaseDate = releaseDate;
             _numTrack = numTrack;

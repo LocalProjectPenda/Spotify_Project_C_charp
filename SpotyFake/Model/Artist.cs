@@ -10,23 +10,26 @@ namespace SpotyFake.Model
     {
         public int _idArtist { get; set; }
         public string _artName { get; set; }
-        public string _description { get; set; }
+       // public string _description { get; set; }
         public Group _group;
-        
        
 
-        List<Song> songs;
-        List<Album> albums;
+        public List<Song> songs;
+       public List<Album> albums;
 
-        public Artist( int id, string artName, string description)
+        public Artist() 
+        {
+           
+        }
+        public Artist( int id, string artName)
         {
             _idArtist = id;
             _artName = artName;
-            _description = description;
-            songs = new List<Song>();
             albums = new List<Album>();
+            songs = new List<Song>();
             
         }
+
 
     
 
@@ -36,9 +39,9 @@ namespace SpotyFake.Model
         {
             albums.Add(album);
         }
-        public void CreatAlbum(string title, string releaseDate, int numTrack, bool liveVersion)
+        public void CreatAlbum(int id, string title, string releaseDate, int numTrack, bool liveVersion)
         {
-            Album album = new Album(title, releaseDate, numTrack, liveVersion);
+            Album album = new Album(id, title, releaseDate, numTrack, liveVersion);
             albums.Add(album);
         }
 
