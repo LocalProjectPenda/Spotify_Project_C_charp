@@ -13,9 +13,7 @@ namespace SpotyFake.Model
         {
             
                 Console.WriteLine($" listen : {song._title}");
-            PlayList playList = new PlayList();
-            playList._namePlaylist = "bibliotheque";
-           playList._songs.Add( song );
+            
         }
         public void Stop(Song song) 
         {

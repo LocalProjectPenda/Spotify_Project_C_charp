@@ -75,7 +75,7 @@ namespace SpotyFake.Model
             items.Add(EllieGoulding);
             items.Add(RichieSpice);
 
-           
+           PlayList playlist = new PlayList("Bibliotheque") ;
 
             // Madonna
 
@@ -83,7 +83,7 @@ namespace SpotyFake.Model
 
             Console.WriteLine(" Artist \n\n ");
 
-            static void ListArtists(List<Artist> items)
+            static void ListArtists(List<Artist> items, PlayList playlist)
             {
                 
                 foreach (var artist in items)
@@ -138,10 +138,12 @@ namespace SpotyFake.Model
                                 var audio = list.Where(i => i.Id == son).First<Song>();
                                 if (audio != null)
                                 {
-
+                                         
                                     Media media = new Media();
                                     media.Play(audio);
-                                    
+                                   
+
+                                    playlist._songs.Add(audio);
 
                                 }
                             }
@@ -164,7 +166,7 @@ namespace SpotyFake.Model
 
             }
 
-            ListArtists(items);
+            ListArtists(items, playlist);
 
 
            

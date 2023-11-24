@@ -11,7 +11,7 @@ namespace SpotyFake.Model
         public string _namePlaylist {  get; set; }
         public List<Song> _songs;
         public User _user;
-        public PlayList() { }
+       
         public PlayList( string name) 
         {
             _namePlaylist = name;

@@ -15,6 +15,7 @@ namespace SpotyFake.Model
         public int _duration { get; set; }
         public Artist _artist;
         public Album _album;
+        public PlayList _playliste;
         public List<Song> _song;
         
 
