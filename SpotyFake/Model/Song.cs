@@ -16,6 +16,7 @@ namespace SpotyFake.Model
         public Artist _artist;
         public Album _album;
         public PlayList _playliste;
+        public Music _radio;
         public List<Song> _song;
         
 
@@ -28,12 +29,21 @@ namespace SpotyFake.Model
             _genre = genre;
             _releaseDate = releaseDate;
             _duration = duration;
-           
-            
-           
-           
             
         }
-       
+
+        public void ListSong()
+        {
+
+
+            foreach (var i in _song)
+            {
+
+                Console.WriteLine(i.Id + "  " + i._title + " " + i._genre + " " + i._releaseDate + " " + i._duration);
+
+            }
+
+        }
+
     }
 }

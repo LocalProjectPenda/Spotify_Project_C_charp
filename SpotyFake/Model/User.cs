@@ -14,7 +14,7 @@ namespace SpotyFake.Model
         public Setting Setting;
 
         public List<Song> songs;
-        public List<Radio> radios;
+        public List<Music> radios;
         public List<PlayList> playlists;
     }
 }

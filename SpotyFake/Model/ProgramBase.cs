@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Drawing;
+using Microsoft.VisualBasic.FileIO;
 using SpotyFake.Controller;
 using SpotyFake.Model;
+using SpotyFake.FileSystem;
 
 
 namespace SpotyFake.Model
@@ -11,49 +13,71 @@ namespace SpotyFake.Model
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Choose an option from the following list:");
-            Console.WriteLine("\tM - MUSIC");
-            Console.WriteLine("\tC - PROFILE");
-            Console.WriteLine("\tA - ARTIST");
-            Console.WriteLine("\tD - ALBUM");
-            Console.WriteLine("\tP - PLAYLIST");
-            Console.WriteLine("\tR - RADIO");
-            Console.WriteLine("\tZ - SEARCH");
-            Console.WriteLine("\tL - PLAYER");
-            char choice = Convert.ToChar(Console.ReadLine());
-
-            ScreenController screenController = new ScreenController();
-            screenController.SelectOption(choice);
 
 
+            #region Generic FileWriter  
+
+            //string path = @"D:\Test\personne.csv";
+
+            //List<Person> Persons = new List<Person>();
+            //Persons.Add(new() { Name = "Bruno", Age = 40 });
+            //Persons.Add(new() { Name = "Marco", Age = 30 });
+            //Persons.Add(new() { Name = "Diego", Age = 20 });
+            //Persons.Add(new() { Name = "Anna", Age = 10 });
+            //Persons.Add(new() { Name = "Maria", Age = 24 });
+            //Persons.Add(new() { Name = "Laura", Age = 50 });
+
+            //DataStore<Person>.WriteonFile(path, Persons);
+
+            #endregion
+
+            #region Generic FileReader 
+            string path = @"D:\Test\songs1.csv";//levare i .... sull file csv
+
+
+            List<string> lines = File.ReadAllLines(path).ToList();
+
+
+
+            List<Music> data = DataStore<Music>.CreateObject(lines);
+
+            foreach (var p in data)
+            {
+                Console.WriteLine(p.Id + " " + p.Rating + " " + p.Title + " " + p.Album + " " + p.Artist + " " + p.Genre + " " + p.Playlist + " " + p.PlaylistId);
+
+            }
+            #endregion
 
 
 
             // ARTIST
 
-            List<Song> songMadonna = new List<Song>();
-            Song ExtremeOccident = new Song(1, "ExtremeOccident", "", "", 20);
-            Song Loca = new Song(2, "loca", "", "", 20);
-            Song Dark = new Song(3, "Dark", "", "", 20);
+            List<Song> everySong = new List<Song>();
+            Song ExtremeOccident = new Song(1, "ExtremeOccident", "pop", "", 20);
+            Song Loca = new Song(2, "loca", "rock", "", 20);
+            Song Dark = new Song(3, "Dark", "pop", "", 20);
+            Song Reggaeton = new Song(4, "Baila", "latino", "", 20);
+            Song cyber = new Song(5, "Cyber World", "reaggae", "", 20);
+            Song One = new Song(3, "One fire", "hip hop", "", 20);
 
-            songMadonna.Add(ExtremeOccident);
-            songMadonna.Add(Loca);
-            songMadonna.Add(Dark);
+            everySong.Add(ExtremeOccident);
+            everySong.Add(Loca);
+            everySong.Add(Dark);
 
 
-            List<Album> albumMadonna = new List<Album>();
+            List<Album> everyAlbum = new List<Album>();
 
-            Album MadameX = new Album() { id = 1, _title = "MadameX", _releaseDate = "2019", _liveVersion = false, _numTrack = 3, songs = songMadonna };
-            Album MadameY = new Album() { id = 2, _title = "MadameY", _releaseDate = "2012", _liveVersion = false, _numTrack = 3, songs = songMadonna };
-            Album MadameZ = new Album() { id = 3, _title = "MadameZ", _releaseDate = "2003", _liveVersion = false, _numTrack = 3, songs = songMadonna };
+            Album MadameX = new Album() { id = 1, _title = "MadameX", _releaseDate = "2019", _liveVersion = false, _numTrack = 3, songs = everySong };
+            Album MadameY = new Album() { id = 2, _title = "MadameY", _releaseDate = "2012", _liveVersion = false, _numTrack = 3, songs = everySong };
+            Album MadameZ = new Album() { id = 3, _title = "MadameZ", _releaseDate = "2003", _liveVersion = false, _numTrack = 3, songs = everySong };
 
-            albumMadonna.Add(MadameX);
-            albumMadonna.Add(MadameY);
-            albumMadonna.Add(MadameZ);
+            everyAlbum.Add(MadameX);
+            everyAlbum.Add(MadameY);
+            everyAlbum.Add(MadameZ);
 
 
             List<Artist> items = new List<Artist>();
-           Artist Madonna = new Artist() { _idArtist = 1, _artName = "Madonna", albums = albumMadonna};
+           Artist Madonna = new Artist() { _idArtist = 1, _artName = "Madonna", albums = everyAlbum};
             Artist EdSheeran = new Artist() { _idArtist = 2, _artName = "Ed sheeran" };
             Artist Rihanna = new Artist() { _idArtist = 3, _artName = "Rihanna" };
             Artist ImagineDragon = new Artist() { _idArtist = 4, _artName = "Imagine Dragon" };
@@ -76,100 +100,74 @@ namespace SpotyFake.Model
             items.Add(RichieSpice);
 
            PlayList playlist = new PlayList("Bibliotheque") ;
+            playlist.AddSong(ExtremeOccident);
+            playlist.AddSong(Loca);
+            playlist.AddSong(Dark);
 
+            Radio radio = new Radio(everySong, everyAlbum, items);
             // Madonna
 
-           
 
-            Console.WriteLine(" Artist \n\n ");
+            Console.WriteLine("Choose an option from the following list:");
+            Console.WriteLine("\tM - MUSIC");
+            Console.WriteLine("\tC - PROFILE");
+            Console.WriteLine("\tA - ARTIST");
+            Console.WriteLine("\tD - ALBUM");
+            Console.WriteLine("\tP - PLAYLIST");
+            Console.WriteLine("\tR - RADIO");
+            Console.WriteLine("\tZ - SEARCH");
+            Console.WriteLine("\tL - PLAYER");
+            char choice = Convert.ToChar(Console.ReadLine());
+            
 
-            static void ListArtists(List<Artist> items, PlayList playlist)
+            switch (char.ToUpper(choice))
             {
-                
-                foreach (var artist in items)
-                {
-                    Console.WriteLine(artist._idArtist + "   " + artist._artName);
-
-                }
-            
-           ;
-            
-
-            Console.WriteLine("\n\n Select  ARTIST \n\n");
-           
-            int code = Convert.ToInt32( Console.ReadLine());
-                Console.WriteLine("\n\n LIST ALBUM \n\n");
-                var res = items.Where(i => i._idArtist == code).First<Artist>();
-            List<Album> albums = res.albums;
-
-                if (albums != null)
-                {
-                    foreach (var album in albums)
-                    {
-                        Console.WriteLine( "   " + album.id + "   " + album._title);
-
-                    }
-
-                    Console.WriteLine("Select ALBUM");
-                    string choix = Console.ReadLine();
-                    Console.WriteLine("\n\n LIST SONG \n\n");
-                    int num;
-                    if (int.TryParse(choix, out num))
-                    {
-                        var alb = albums.Where(i => i.id == num).First<Album>();
-                        List<Song> list = alb.songs;
-                        if (list != null)
-                        {
-                            foreach (var song in list)
-                            {
-                                Console.WriteLine( "   " + song.Id + "   " + song._title);
-
-                            }
-
-
-                            Console.WriteLine("\n\n SELECT SONG \n\n");
-                            string note = Console.ReadLine();
-                            int son;
-                            if (int.TryParse(note, out son))
-                            {
-
-
-
-                                var audio = list.Where(i => i.Id == son).First<Song>();
-                                if (audio != null)
-                                {
-                                         
-                                    Media media = new Media();
-                                    media.Play(audio);
-                                   
-
-                                    playlist._songs.Add(audio);
-
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine("La valeur entrée n'est pas un entier valide.");
-                            }
-
-
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("La valeur entrée n'est pas un entier valide.");
-                    }
-
-                }  
-
-
-
+                case 'M':
+                    Console.WriteLine(" Option MUSIC ");
+                    MusicController music = new MusicController();
+                    music.GetSoong(data, playlist);
+                    break;
+                case 'C':
+                    Console.WriteLine($" Option PROFILE");
+                    break;
+                case 'A':
+                    Console.WriteLine(" Option ARTIST ");
+                    ArtistController artistC = new ArtistController();
+                    artistC.ListArtists(items, playlist);
+                    break;
+                case 'D':
+                    Console.WriteLine($" Option ALBUM");
+                    AlbumController album = new AlbumController();
+                    album.ListAlbum(everyAlbum, playlist);
+                    break;
+                case 'P':
+                    Console.WriteLine("Option PLAYLIST");
+                    PlaylistController playLists = new PlaylistController();
+                    playLists.ListFavori(playlist, everyAlbum);
+                    break;
+                case 'R':
+                    Console.WriteLine("Option RADIO");
+                    RadioController radioCont = new RadioController();
+                    radioCont.GetSoong(radio, playlist);
+                    break;
+                case 'Z':
+                    Console.WriteLine("Option SEARCH");
+                    break;
+                case 'L':
+                    Console.WriteLine("Option PLAYER");
+                    break;
             }
+            //ScreenController screenController = new ScreenController();
+            //screenController.SelectOption(choice);
 
-            ListArtists(items, playlist);
+
+            Console.WriteLine(" HOME \n\n ");
+
+            //ArtistController artistC = new ArtistController() ;
+            // artistC.ListArtists(items, playlist);
 
 
-           
+
             //switch (artist)
             //{
             //    case artist._idArtist:

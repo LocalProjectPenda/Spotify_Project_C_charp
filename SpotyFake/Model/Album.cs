@@ -14,7 +14,9 @@ namespace SpotyFake.Model
       public bool _liveVersion {  get; set; }
         public Song _song;
         public Artist _artist;
+        public Music _radio;
         public List<Song> songs;
+        public List<Album> albums;
      
 
         public Album() { }
@@ -48,8 +50,20 @@ namespace SpotyFake.Model
             }
 
         }
+        public void ListAlbums()
+        {
 
-       
-       
+
+            foreach (var i in albums)
+            {
+
+                Console.WriteLine(i.id + " : " + i._title + " " + i._artist + " " + i._releaseDate + " " + i._liveVersion);
+
+            }
+
+        }
+
+
+
     }
 }

@@ -12,6 +12,7 @@ namespace SpotyFake.Model
         public string _artName { get; set; }
        // public string _description { get; set; }
         public Group _group;
+        public Music _radio;
        
 
         public List<Song> songs;

@@ -8,11 +8,25 @@ namespace SpotyFake.Model
 {
     internal class Radio
     {
-        public string _nameRadio {  get; set; }
+
 
         public List<Song> _songs;
-        public List<Album> albums;
+        public List<Album> _albums;
+
+        public List<Artist> _artists;
 
 
+        public Radio(List<Song> songs, List<Album> albums, List<Artist> artists)
+        {
+
+            _songs = songs;
+            _albums = albums;
+            _artists = artists;
+        }
+
+        //public void SearchGender(string gender)
+        //{
+        //    var son = 
+        //}
     }
 }
