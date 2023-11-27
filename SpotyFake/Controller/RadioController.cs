@@ -75,7 +75,13 @@ namespace SpotyFake.Controller
                     }
 
 
-                
+                Console.WriteLine("\n\n 1_ EXit ");
+
+                int exit = Convert.ToInt32(Console.ReadLine());
+                if (exit != 0)
+                {
+                    return;
+                }
 
 
 

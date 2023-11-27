@@ -43,7 +43,7 @@ namespace SpotyFake.Model
 
             foreach (var p in data)
             {
-                Console.WriteLine(p.Id + " " + p.Rating + " " + p.Title + " " + p.Album + " " + p.Artist + " " + p.Genre + " " + p.Playlist + " " + p.PlaylistId);
+               // Console.WriteLine(p.Id + " " + p.Rating + " " + p.Title + " " + p.Album + " " + p.Artist + " " + p.Genre + " " + p.Playlist + " " + p.PlaylistId);
 
             }
             #endregion
@@ -124,8 +124,9 @@ namespace SpotyFake.Model
             {
                 case 'M':
                     Console.WriteLine(" Option MUSIC ");
+                    
                     MusicController music = new MusicController();
-                    music.GetSoong(data, playlist);
+                    music.GetAllSoong(data);
                     break;
                 case 'C':
                     Console.WriteLine($" Option PROFILE");
@@ -152,6 +153,14 @@ namespace SpotyFake.Model
                     break;
                 case 'Z':
                     Console.WriteLine("Option SEARCH");
+                    Console.WriteLine("Choose favori search");
+                    Console.WriteLine("\t1 - ALBUM");
+                    Console.WriteLine("\t2 - ARTIST");
+                    Console.WriteLine("\t3 - SONG");
+                    int val = Convert.ToInt32(Console.ReadLine());
+
+                   MusicController musicController = new MusicController();
+                    musicController.Search(val, data);
                     break;
                 case 'L':
                     Console.WriteLine("Option PLAYER");

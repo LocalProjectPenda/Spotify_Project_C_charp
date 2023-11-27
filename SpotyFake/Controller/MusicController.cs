@@ -9,14 +9,93 @@ namespace SpotyFake.Controller
 {
     internal class MusicController
     {
+        public void Search(int val, List<Music> music)
+        {
 
-        public void GetSoong(List<Music> music, PlayList playlist)
+            if (val == 1)
+            {
+
+                GetRatingAlbum();
+
+
+            }
+
+            else if (val == 2)
+            {
+                GetRatingArtist();
+            }
+            else
+            {
+                GetAllSoong(music);
+
+            }
+
+
+
+            void GetRatingAlbum()
+            {
+
+
+
+                Console.WriteLine("\t-POP ");
+                Console.WriteLine("\t-ROCK ");
+                Console.WriteLine("\t-REAGGAE ");
+                Console.WriteLine("\t-HIP HOP ");
+                Console.WriteLine("\t-LATINO ");
+
+                string gender = Console.ReadLine().ToLower();
+
+
+
+                var list = music.Where(i => i.Genre == gender);
+                List<Music> sortedlist = music.OrderByDescending(a => a.Rating).ToList();
+
+
+                Console.WriteLine("TOP 5 Album :");
+
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.WriteLine($"{sortedlist[i].Album} - Rating : {sortedlist[i].Rating}");
+                }
+
+            }
+
+            void GetRatingArtist()
+            {
+
+
+
+                Console.WriteLine("\t-POP ");
+                Console.WriteLine("\t-ROCK ");
+                Console.WriteLine("\t-REAGGAE ");
+                Console.WriteLine("\t-HIP HOP ");
+                Console.WriteLine("\t-LATINO ");
+
+                string gender = Console.ReadLine().ToLower();
+
+
+
+                var list = music.Where(i => i.Genre == gender);
+                List<Music> sortedlist = music.OrderByDescending(a => a.Rating).ToList();
+
+
+                Console.WriteLine("TOP 5 Album :");
+
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.WriteLine($"{sortedlist[i].Artist} - Rating : {sortedlist[i].Rating}");
+                }
+
+            }
+
+        }
+       public void GetAllSoong(List<Music> music)
         {
 
 
             Console.WriteLine("\n\n LIST SONG \n\n");
 
-           
+
             if (music != null)
             {
                 foreach (var s in music)
@@ -25,39 +104,13 @@ namespace SpotyFake.Controller
 
                 }
 
-
-                //Console.WriteLine("\n\n SELECT SONG ");
-                //Console.WriteLine(" SELECT ARTIST  \n\n");
-
-                //string artist = Console.ReadLine().ToLower();
-
-                //if (artist !=null)
-                //{
-
-
-
-                //    var artists = music.Where(i => i.Artist == artist);
-                //    foreach (var s in artist)
-                //    {
-                //        Console.WriteLine(s.Id + " " + s.Rating + " " + s.Title + " " + p.Album + " " + p.Artist + " " + p.Genre + " " + p.Playlist + " " + p.PlaylistId);
-
-                //    }
-
-
-                //}
-                //else
-                //{
-                //    Console.WriteLine("La valeur entrée n'est pas un entier valide.");
-                //}
-
-
+               
+                
             }
 
 
-
-
-
         }
-
     }
+       
 }
+    
