@@ -13,5 +13,7 @@ namespace SpotyFake.Model
         public bool isPremium {  get; set; }
         public bool _numDispositive {  get; set; }
 
+
+
     }
 }

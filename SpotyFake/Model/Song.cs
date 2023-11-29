@@ -12,7 +12,7 @@ namespace SpotyFake.Model
         public string _title { get; set; }
         public string _genre { get; set; }
         public string _releaseDate { get; set; }
-        public int _duration { get; set; }
+        public double _duration { get; set; }
         public Artist _artist;
         public Album _album;
         public PlayList _playliste;

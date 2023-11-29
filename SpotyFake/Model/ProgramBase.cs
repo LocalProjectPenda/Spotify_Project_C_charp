@@ -4,6 +4,7 @@ using Microsoft.VisualBasic.FileIO;
 using SpotyFake.Controller;
 using SpotyFake.Model;
 using SpotyFake.FileSystem;
+using SpotyFake.Time;
 
 
 namespace SpotyFake.Model
@@ -166,31 +167,16 @@ namespace SpotyFake.Model
                     Console.WriteLine("Option PLAYER");
                     break;
             }
-            //ScreenController screenController = new ScreenController();
-            //screenController.SelectOption(choice);
+           
+
 
 
             Console.WriteLine(" HOME \n\n ");
 
-            //ArtistController artistC = new ArtistController() ;
-            // artistC.ListArtists(items, playlist);
 
 
 
-            //switch (artist)
-            //{
-            //    case artist._idArtist:
-            //        // Code à exécuter si variable correspond à option1
-            //        break;
-            //    case option2:
-            //        // Code à exécuter si variable correspond à option2
-            //        break;
-            //    // Ajouter d'autres cases au besoin
-
-            //    default:
-            //        // Code à exécuter si aucune des options précédentes n'est satisfaite
-            //        break;
-            //}
+           
         }
     }
 }
