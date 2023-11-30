@@ -12,33 +12,42 @@ namespace SpotyFake.Model
     {
         ConfigTime configTime = new ConfigTime();
         TimeSpan totalTime;
+        TimeSpan result;
         public void Play(Song song)
         {
 
 
+            
             Console.WriteLine($" listen : {song._title}");
             Console.WriteLine("Appuyez sur Entrée pour démarrer le timer...");
             Console.ReadLine();
 
-            DateTime startTime = DateTime.Now;
-            DateTime myDate = DateTime.Now.AddMinutes(10);
+            //DateTime startTime = DateTime.Now;
+            //DateTime myDate = DateTime.Now.AddMinutes(10);
 
-            if (myDate >= startTime )
-            {
+            //if (myDate >= startTime )
+            //{
                 configTime.StartTimer();
-            }
-            else
-            {
-                configTime.StopTimer();
-            }
+            //}
+            //else
+            //{
+            //    configTime.StopTimer();
+            //}
+            Console.WriteLine("Appuyez sur Entrée pour démarrer le timer...");
+            Console.ReadLine();
 
-
+            configTime.StopTimer();
         }
-        public void Stop(Song song) 
+        public void Stop(Song song)
         {
             configTime.StopTimer();
             Console.WriteLine($" Stop : {song._title}");
             Console.WriteLine("Temps écoulé : " + totalTime.ToString());
+            // TimeSpan result =  totalTime
+            var us = song._playliste._user;
+            var Subscription = us.Subscription;
+            result = Subscription.timeSub - totalTime;
+            Console.WriteLine("Temps restant : " + result.ToString());
 
         }
         public void Pause(Song song) 

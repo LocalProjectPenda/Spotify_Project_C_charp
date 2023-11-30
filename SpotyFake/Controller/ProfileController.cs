@@ -13,12 +13,35 @@ namespace SpotyFake.Controller
         {
             User use = new User();
 
-           bool isLogin = true;
-            string langue = user._language;
+           
+           // string langue = user._language;
 
        
 
         }
+        public void Login(List<User> users,string userName, string Password ) 
+        {
+
+            CheckLogin(users, userName, Password);
+
+        }
+        public bool CheckLogin(List<User> users, string userName, string Password)
+        {
+           
+            var us = users.Where(i => i._userName == userName && i._password == Password).FirstOrDefault<User>();
+            if (us._userName == "admin" && us._password == "password123")
+            {
+
+                return true; // Connexion réussie
+            }
+            else
+            {
+                return false; // Identifiants incorrects
+            }
+
+        }
+        public void Logout() { }
+        public void SigIn() { }
 
 
     }

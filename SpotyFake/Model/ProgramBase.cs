@@ -5,6 +5,7 @@ using SpotyFake.Controller;
 using SpotyFake.Model;
 using SpotyFake.FileSystem;
 using SpotyFake.Time;
+using System.Collections.Generic;
 
 
 namespace SpotyFake.Model
@@ -99,11 +100,32 @@ namespace SpotyFake.Model
             items.Add(JohnLegende);
             items.Add(EllieGoulding);
             items.Add(RichieSpice);
-
-           PlayList playlist = new PlayList("Bibliotheque") ;
+            
+            PlayList playlist = new PlayList(1, "Bibliotheque");
             playlist.AddSong(ExtremeOccident);
             playlist.AddSong(Loca);
             playlist.AddSong(Dark);
+
+            List<PlayList> playlists = new List<PlayList>();
+            playlists.Add(playlist);
+
+            User user1 = new User() { _name = "penda", _surname= "cisse", _birthday = "40", _userName = "admin", _password = "password123", _playlist = playlists };
+            User user2 = new User() { _name = "Anta", _surname = "Kebe", _birthday = "27", _userName = "", _password = "", _playlist = playlists };
+            User user3 = new User("aicha","niang","35","","");
+            User user4 = new User("papa","niasse","18","","");
+            User user5 = new User("mari","sy","19","","");
+            User user6 = new User("nafi","diop","32","","");
+            User user7 = new User("mouha","ba","60","","");
+            List<User> users = new List<User>();
+            users.Add(user1);
+            users.Add(user2);
+            users.Add(user3);
+            users.Add(user4);
+            users.Add(user5);
+            users.Add(user6);
+            users.Add(user7);
+
+         
 
             Radio radio = new Radio(everySong, everyAlbum, items);
             // Madonna
@@ -144,8 +166,26 @@ namespace SpotyFake.Model
                     break;
                 case 'P':
                     Console.WriteLine("Option PLAYLIST");
-                    PlaylistController playLists = new PlaylistController();
-                    playLists.ListFavori(playlist, everyAlbum);
+                    Console.WriteLine("USER NAME");
+                    string userName = Console.ReadLine();
+                    Console.WriteLine("PASSWORD");
+                    string Password = Console.ReadLine();
+                    Console.WriteLine("LANGUAGE");
+                    string language = Console.ReadLine();
+                    ProfileController profile = new ProfileController();
+                   bool result = profile.CheckLogin(users, userName, Password);
+                    if (result)
+                    {
+                        
+                        PlaylistController playLists = new PlaylistController();
+                        var user = users.Where(i => i._userName == userName && i._password == Password).First<User>();
+                       // List<PlayList> list = user._playlist;
+
+                        playLists.ListFavori(user, everyAlbum);
+                    }
+                    else {
+                        Console.WriteLine(" LOGIN OR PASSWORD FAILED");
+                   }
                     break;
                 case 'R':
                     Console.WriteLine("Option RADIO");

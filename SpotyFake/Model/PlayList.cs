@@ -8,16 +8,18 @@ namespace SpotyFake.Model
 {
     internal class PlayList
     {
+        public int _idPlayliste {  get; set; }
         public string _namePlaylist { get; set; }
         public List<Song> _songs;
         public List<PlayList> playLists;
         public User _user;
 
-        public PlayList(string name)
+        //public PlayList() { }
+        public PlayList(int id, string name)
         {
             _namePlaylist = name;
             _songs = new List<Song>();
-            _user = new User();
+           
         }
         public void AddSong(Song song)
         {

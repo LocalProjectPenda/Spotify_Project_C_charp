@@ -9,14 +9,30 @@ namespace SpotyFake.Controller
 {
     internal class PlaylistController
     {
-        public void ListFavori(PlayList playlist, List<Album>albums)
+        public void ListFavori(User user, List<Album>albums)
         {
+            Console.WriteLine("\n\n LIST PLAYLIST \n\n");
             
-         
+            List<PlayList>myPlaylists = user._playlist;
+
+            if (myPlaylists != null)
+            {
+                foreach (var p in myPlaylists)
+                {
+                    
+                    Console.WriteLine(p._idPlayliste+"   " +p._namePlaylist );
+                   
+                }
+            }
+            Console.WriteLine("\n\n SELECT PLAYLIST \n\n");
+            int namePlay = Convert.ToInt32( Console.ReadLine());
+
+            var myplaylist = myPlaylists.Where(i => i._idPlayliste == namePlay).First<PlayList>();
+
             Console.WriteLine("\n\n LIST SONG \n\n");
            
                
-                List<Song> list = playlist._songs;
+                List<Song> list = myplaylist._songs;
                 if (list != null)
                 {
                     foreach (var s in list)
@@ -42,10 +58,12 @@ namespace SpotyFake.Controller
 
                             Media media = new Media();
 
-                            media.Play(audio);
+                            
+                        
+                        media.Play(audio);
 
 
-                            playlist._songs.Add(audio);
+                        myplaylist._songs.Add(audio);
 
                         }
                     }
@@ -53,7 +71,7 @@ namespace SpotyFake.Controller
                 {
 
                     AlbumController album = new AlbumController();
-                    album.ListAlbum(albums, playlist);
+                    album.ListAlbum(albums, myplaylist);
 
 
                 }

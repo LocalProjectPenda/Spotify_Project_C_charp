@@ -62,10 +62,16 @@ using System.Timers;
         timer.Interval = 1000; // 1 seconde
         timer.Elapsed += TimerElapsed;
 
-        startTime = DateTime.Now;
-
-        // Démarrer le timer
-        timer.Enabled = true;
+        startTime = DateTime.Now; 
+            
+            //DateTime myDate = DateTime.Now.AddMinutes(1);
+            //do
+            //{
+            //    Console.WriteLine(myDate.ToString() );
+                // Démarrer le timer
+                timer.Enabled = true;
+            //} while (startTime <= myDate) ;
+            //StopTimer();
     }
 
     public void StopTimer()
@@ -75,7 +81,9 @@ using System.Timers;
 
         // Calculer le temps total écoulé
         totalTime = DateTime.Now - startTime;
-    }
+            Console.WriteLine("Temps écoulé : " + totalTime.ToString());
+            
+        }
 
     public void TimerElapsed(object sender, ElapsedEventArgs e)
     {
