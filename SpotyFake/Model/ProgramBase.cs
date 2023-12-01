@@ -108,7 +108,7 @@ namespace SpotyFake.Model
 
             List<PlayList> playlists = new List<PlayList>();
             playlists.Add(playlist);
-          Subscription basic = new Subscription(NameSubs.Basic, 50,100);
+          Subscription basic = new Subscription(NameSubs.Basic, 50, 100);
           Subscription premium = new Subscription(NameSubs.Premium, 100,1000);
           Subscription gold = new Subscription(NameSubs.Gold, 150,0);
 
@@ -173,8 +173,14 @@ namespace SpotyFake.Model
                     string userName = Console.ReadLine();
                     Console.WriteLine("PASSWORD");
                     string Password = Console.ReadLine();
-                    Console.WriteLine("LANGUAGE");
-                    string language = Console.ReadLine();
+                    Console.WriteLine("SELECT LANGUAGE");
+                    Console.WriteLine("\t1 - ENGLISH");
+                    Console.WriteLine("\t2 - FRENCH");
+                    Console.WriteLine("\t3 - ITALIAN");
+                    Console.WriteLine("\t4 - GERMAN");
+                    int language = Convert.ToInt32(Console.ReadLine());
+                    ConfigDate configDate = new ConfigDate();
+                    configDate.AutomaticConvertion(language);
                     ProfileController profile = new ProfileController();
                    bool result = profile.CheckLogin(users, userName, Password);
                     if (result)

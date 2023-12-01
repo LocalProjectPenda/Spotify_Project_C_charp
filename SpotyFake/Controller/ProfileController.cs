@@ -24,6 +24,9 @@ namespace SpotyFake.Controller
 
             CheckLogin(users, userName, Password);
 
+            
+            
+
         }
         public bool CheckLogin(List<User> users, string userName, string Password)
         {
@@ -38,6 +41,11 @@ namespace SpotyFake.Controller
             {
                 return false; // Identifiants incorrects
             }
+
+        }
+
+        public void FormatDate() 
+        {
 
         }
         public void Logout() { }

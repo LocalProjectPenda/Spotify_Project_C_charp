@@ -38,19 +38,19 @@ namespace SpotyFake.Model
             if (sub._type == NameSubs.Basic ) 
             {
                 
-                TimeSpan myTime = configTime.GenTimeSpanFromMinutes(timeSub);
+                TimeSpan myTime = configTime.GenTimeSpanFromMinutes(100);
                 return myTime;
 
             }
             else if  (sub._type == NameSubs.Premium)
             {
                 
-                TimeSpan myTime = configTime.GenTimeSpanFromMinutes(   timeSub);
+                TimeSpan myTime = configTime.GenTimeSpanFromMinutes(1000);
                 return myTime;
             }
             else
             {
-                TimeSpan myTime = configTime.GenTimeSpanFromMinutes(timeSub);
+                TimeSpan myTime = configTime.GenTimeSpanFromMinutes(0);
                 return myTime;
             }
 

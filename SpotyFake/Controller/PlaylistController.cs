@@ -64,9 +64,15 @@ namespace SpotyFake.Controller
 
                         TimeSpan sub = subscription.GetSubscrib(subscription);
                         TimeSpan result = sub - totalTime;
-                        
+
+                        DateTime myDate = DateTime.Now.Add(result);
+                        subscription.timeSub = myDate.ToOADate();
+
+                        //subscription.timeSub = result.ToOADate();
                         //user._subscription.timeSub =; --------------convert TimeSpan in double----------
-                        Console.WriteLine("Temps restant : " + result.ToString());
+                        Console.WriteLine("Temps restant timespan : " + result.ToString());
+                        Console.WriteLine("Temps restant date : " + myDate.ToString());
+                        Console.WriteLine("Temps restant double : " + subscription.timeSub.ToString());
 
 
                         myplaylist._songs.Add(audio);

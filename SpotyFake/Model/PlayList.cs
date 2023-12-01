@@ -17,6 +17,7 @@ namespace SpotyFake.Model
         //public PlayList() { }
         public PlayList(int id, string name)
         {
+            _idPlayliste = id;
             _namePlaylist = name;
             _songs = new List<Song>();
            
