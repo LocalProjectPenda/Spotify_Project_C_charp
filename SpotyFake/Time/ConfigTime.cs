@@ -74,7 +74,7 @@ using System.Timers;
             //StopTimer();
     }
 
-    public void StopTimer()
+    public TimeSpan StopTimer()
     {
         // Arrêter le timer
         timer.Enabled = false;
@@ -82,7 +82,7 @@ using System.Timers;
         // Calculer le temps total écoulé
         totalTime = DateTime.Now - startTime;
             Console.WriteLine("Temps écoulé : " + totalTime.ToString());
-            
+            return totalTime;
         }
 
     public void TimerElapsed(object sender, ElapsedEventArgs e)

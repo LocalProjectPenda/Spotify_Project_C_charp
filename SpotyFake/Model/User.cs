@@ -14,19 +14,20 @@ namespace SpotyFake.Model
         public string _language { get; set; }
         
         public Setting Setting;
-        public Subscription Subscription;
+        public Subscription _subscription;
         
 
         
         public List<PlayList> _playlist;
         public User() { }
 
-       public User(string name, string surname, string birthday, string userName, string password)
+       public User(string name, string surname, string birthday, string userName, string password, Subscription subscription)
             :base(name, surname, birthday)
         {
             _userName = userName;
             _password = password;
            // _language = language; 
+           _subscription = subscription;
            _playlist = new List<PlayList>();
 
         }

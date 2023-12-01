@@ -108,14 +108,17 @@ namespace SpotyFake.Model
 
             List<PlayList> playlists = new List<PlayList>();
             playlists.Add(playlist);
+          Subscription basic = new Subscription(NameSubs.Basic, 50,100);
+          Subscription premium = new Subscription(NameSubs.Premium, 100,1000);
+          Subscription gold = new Subscription(NameSubs.Gold, 150,0);
 
-            User user1 = new User() { _name = "penda", _surname= "cisse", _birthday = "40", _userName = "admin", _password = "password123", _playlist = playlists };
-            User user2 = new User() { _name = "Anta", _surname = "Kebe", _birthday = "27", _userName = "", _password = "", _playlist = playlists };
-            User user3 = new User("aicha","niang","35","","");
-            User user4 = new User("papa","niasse","18","","");
-            User user5 = new User("mari","sy","19","","");
-            User user6 = new User("nafi","diop","32","","");
-            User user7 = new User("mouha","ba","60","","");
+            User user1 = new User() { _name = "penda", _surname= "cisse", _birthday = "40", _userName = "admin", _password = "password123", _subscription = basic , _playlist = playlists };
+            User user2 = new User() { _name = "Anta", _surname = "Kebe", _birthday = "27", _userName = "", _password = "", _subscription = premium, _playlist = playlists };
+            User user3 = new User() { _name= "aicha", _surname ="niang", _birthday = "35", _userName = "", _password="", _subscription= premium, _playlist= playlists };
+            User user4 = new User() { _name = "papa", _surname = "niasse", _birthday = "18", _userName = "", _password = "", _subscription = premium, _playlist = playlists };
+            User user5 = new User() { _name = "mari", _surname = "sy", _birthday = "19", _userName = "", _password = "", _subscription = premium, _playlist = playlists };
+            User user6 = new User() { _name = "nafi", _surname = "diop", _birthday = "32", _userName = "", _password = "", _subscription = premium, _playlist = playlists };
+            User user7 = new User() { _name = "mouha", _surname = "ba", _birthday = "60", _userName = "", _password = "", _subscription = premium, _playlist = playlists };
             List<User> users = new List<User>();
             users.Add(user1);
             users.Add(user2);

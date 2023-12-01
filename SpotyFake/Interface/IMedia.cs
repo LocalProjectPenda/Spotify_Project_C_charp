@@ -9,7 +9,7 @@ namespace SpotyFake.Interface
 {
     internal interface IMedia
     {
-        public void Play(Song song);
+        public TimeSpan Play(Song song);
         public void Stop(Song song);
         public void Pause(Song song);
         public void Next(Song song);

@@ -13,7 +13,7 @@ namespace SpotyFake.Model
         ConfigTime configTime = new ConfigTime();
         TimeSpan totalTime;
         TimeSpan result;
-        public void Play(Song song)
+        public TimeSpan Play(Song song)
         {
 
 
@@ -35,8 +35,18 @@ namespace SpotyFake.Model
             //}
             Console.WriteLine("Appuyez sur Entrée pour démarrer le timer...");
             Console.ReadLine();
+           
+           TimeSpan timeListen = configTime.StopTimer();
+            return timeListen;
 
-            configTime.StopTimer();
+            //Console.WriteLine("Temps écoulé media : " + timeListen.ToString());
+            //User us = song._playliste._user;
+            //Subscription subscription = us._subscription;
+
+            //TimeSpan sub = subscription.GetSubscrib(subscription);
+            //result = sub - totalTime;
+            //Console.WriteLine("Temps restant : " + result.ToString());
+
         }
         public void Stop(Song song)
         {
@@ -44,11 +54,7 @@ namespace SpotyFake.Model
             Console.WriteLine($" Stop : {song._title}");
             Console.WriteLine("Temps écoulé : " + totalTime.ToString());
             // TimeSpan result =  totalTime
-            var us = song._playliste._user;
-            var Subscription = us.Subscription;
-            result = Subscription.timeSub - totalTime;
-            Console.WriteLine("Temps restant : " + result.ToString());
-
+            
         }
         public void Pause(Song song) 
         {

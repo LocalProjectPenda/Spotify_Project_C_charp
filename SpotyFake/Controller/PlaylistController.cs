@@ -58,14 +58,20 @@ namespace SpotyFake.Controller
 
                             Media media = new Media();
 
-                            
+                       TimeSpan totalTime =  media.Play(audio);
+                        Subscription subscription = user._subscription;
+
+
+                        TimeSpan sub = subscription.GetSubscrib(subscription);
+                        TimeSpan result = sub - totalTime;
                         
-                        media.Play(audio);
+                        //user._subscription.timeSub =; --------------convert TimeSpan in double----------
+                        Console.WriteLine("Temps restant : " + result.ToString());
 
 
                         myplaylist._songs.Add(audio);
 
-                        }
+                    }
                     }
                     else if (note == "n"||note == "N")
                 {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SpotyFake.Model
 {
-    enum NameSubs
+  public enum NameSubs
     {
         Basic,
         Premium,
@@ -18,36 +18,40 @@ namespace SpotyFake.Model
     {
         public NameSubs _type { get; set; }
         public decimal _price { get; set; }
-        public TimeSpan timeSub { get; set; }
+        public double timeSub { get; set; }
+       // public NameSubs _nameSubs;
 
         List<User>users { get; set; }
-        public Subscription(NameSubs name, decimal price, TimeSpan duration)
+        public Subscription(NameSubs name, decimal price, double duration)
         {
             _type = name;
             _price = price;
             this.timeSub = duration;
             users = new List<User>();
+            
         }
 
-        public void AddSubscrib(Subscription sub)
+        public TimeSpan GetSubscrib(Subscription sub)
         {
             ConfigTime configTime = new ConfigTime();
 
             if (sub._type == NameSubs.Basic ) 
             {
-                sub._price = 50;
-                sub.timeSub = configTime.GenTimeSpanFromMinutes(100);
+                
+                TimeSpan myTime = configTime.GenTimeSpanFromMinutes(timeSub);
+                return myTime;
 
             }
             else if  (sub._type == NameSubs.Premium)
             {
-                sub._price = 100;
-                sub.timeSub = configTime.GenTimeSpanFromMinutes(100);
+                
+                TimeSpan myTime = configTime.GenTimeSpanFromMinutes(   timeSub);
+                return myTime;
             }
             else
             {
-                sub._price = 150;
-                sub.timeSub = configTime.GenTimeSpanFromMinutes(100);
+                TimeSpan myTime = configTime.GenTimeSpanFromMinutes(timeSub);
+                return myTime;
             }
 
 
