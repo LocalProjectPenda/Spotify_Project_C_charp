@@ -119,20 +119,28 @@ namespace SpotyFake.Time
             if(language == 1) 
             {
                 string dateInUSA = DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss", new CultureInfo("en-US"));
+                string dateIso = DateTime.UtcNow.ToString("o");
                 Console.WriteLine(dateInUSA);
+                Console.WriteLine(dateIso);
 
             }
             if (language == 2) 
             {
                 string dateInFR = DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss", new CultureInfo("fr-FR"));
+                string dateIso = DateTime.UtcNow.ToString("o");
+
                 Console.WriteLine(dateInFR);
+                Console.WriteLine(dateIso);
 
 
             }
             if (language == 3) 
             {
-                string dateInIT = DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss", new CultureInfo("it"));
+                string dateInIT = DateTime.UtcNow.ToString("dddd, dd MMMM yyyy HH:mm:ss", new CultureInfo("it"));
+                string dateIso = DateTime.UtcNow.ToString("o");
+
                 Console.WriteLine(dateInIT);
+                Console.WriteLine(dateIso);
 
             }
             if (language == 4)

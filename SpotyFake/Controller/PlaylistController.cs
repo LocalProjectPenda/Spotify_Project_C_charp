@@ -55,26 +55,53 @@ namespace SpotyFake.Controller
                         var audio = list.Where(i => i.Id == son).First<Song>();
                         if (audio != null)
                         {
-
                             Media media = new Media();
+                             if (user._subscription._type == NameSubs.Basic || user._subscription._type == NameSubs.Premium) { 
 
-                       TimeSpan totalTime =  media.Play(audio);
-                        Subscription subscription = user._subscription;
+                                   if(user._subscription.timeSub != 0) { 
+
+                                            
+
+                                               TimeSpan totalTime =  media.Play(audio);
+                                                Subscription subscription = user._subscription;
 
 
-                        TimeSpan sub = subscription.GetSubscrib(subscription);
-                        TimeSpan result = sub - totalTime;
+                                                TimeSpan sub = subscription.GetSubscrib(subscription);
+                                                TimeSpan result = sub - totalTime;
+                                               double resultFinal = result.TotalMinutes;
+                                                subscription.timeSub = resultFinal;
 
-                        DateTime myDate = DateTime.Now.Add(result);
-                        subscription.timeSub = myDate.ToOADate();
+                       //DateTime myDate =  DateTime.Now.Add(result).
+                       // subscription.timeSub = DateTime.Now.Add(result).ToOADate();
+                       //string Date = DateTime.Now.ToString("HH:mm:ss");
+
+                       // subscription.timeSub = myDate.ToOADate();
 
                         //subscription.timeSub = result.ToOADate();
                         //user._subscription.timeSub =; --------------convert TimeSpan in double----------
-                        Console.WriteLine("Temps restant timespan : " + result.ToString());
-                        Console.WriteLine("Temps restant date : " + myDate.ToString());
-                        Console.WriteLine("Temps restant double : " + subscription.timeSub.ToString());
+                        //Console.WriteLine("Temps restant timespan : " + result.ToString());
+                                                 Console.WriteLine("Temps restant date : " + resultFinal);
+                                //Console.WriteLine("Temps restant date : " + Date.ToString());
+                                // Console.WriteLine("Temps restant double : " + subscription.timeSub);
+                            }
+                            else
+                            {
+                                Random rnd = new Random();
+                                
+                                int id = rnd.Next(0, list.Count);
+                                var x = list[id];
+                               // var sound = list.Where(i => i.Id == id).First<Song>();
 
+                                TimeSpan totalTime = media.Play(x);
+                            }
 
+                        }
+                        else
+                        {
+                            
+
+                            TimeSpan totalTime = media.Play(audio);
+                        }
                         myplaylist._songs.Add(audio);
 
                     }

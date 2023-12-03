@@ -18,8 +18,8 @@ namespace SpotyFake.Model
 
 
             
-            Console.WriteLine($" listen : {song._title}");
-            Console.WriteLine("Appuyez sur Entrée pour démarrer le timer...");
+            Console.WriteLine($" listen : {song._title}\n");
+            Console.WriteLine("Press Enter to start Sound...\n");
             Console.ReadLine();
 
             //DateTime startTime = DateTime.Now;
@@ -33,7 +33,7 @@ namespace SpotyFake.Model
             //{
             //    configTime.StopTimer();
             //}
-            Console.WriteLine("Appuyez sur Entrée pour démarrer le timer...");
+            Console.WriteLine("Press Enter to stop Sound...");
             Console.ReadLine();
            
            TimeSpan timeListen = configTime.StopTimer();
